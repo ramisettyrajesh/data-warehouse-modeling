@@ -1,0 +1,17 @@
+import pandas as pd
+
+def generate_dim_date(start='2023-01-01', end='2023-12-31', output_path='sample_data/DimDate.csv'):
+    dates = pd.date_range(start=start, end=end)
+    df = pd.DataFrame({
+        'sales_date_id': range(1, len(dates)+1),
+        'date': dates,
+        'month': dates.month,
+        'quarter': dates.quarter,
+        'year': dates.year
+    })
+    df.to_csv(output_path, index=False)
+    print(f'DimDate.csv generated: {output_path}')
+
+if __name__ == "__main__":
+    generate_dim_date()
+
